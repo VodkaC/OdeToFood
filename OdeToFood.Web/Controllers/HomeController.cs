@@ -1,4 +1,5 @@
 ﻿using OdeToFood.Data.Service;
+using OdeToFood.Web.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -32,6 +33,13 @@ namespace OdeToFood.Web.Controllers
             ViewBag.Message = "Your contact page.";
 
             return View();
+        }
+
+        public ActionResult Restaurant()
+        {
+            ViewBag.Message = "Your restaurant";
+            var model = new RestaurantViewModel();
+            return View(model);
         }
     }
 }

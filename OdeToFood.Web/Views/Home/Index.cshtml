@@ -1,4 +1,4 @@
-﻿@model IEnumerable<OdeToFood.Data.Models.Restaurant>
+﻿@model  IEnumerable<OdeToFood.Data.Models.Restaurant>
 @{
     ViewBag.Title = "Home Page";
 }
@@ -9,13 +9,15 @@
         <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>*@
     <div>There are @Model.Count() restaurant in the db.</div>
 </div>
+<div>
+    <ul>
+        @foreach (var restaurant in Model)
+        {
+            <li>@restaurant.Name</li>
+        }
+    </ul>
+</div>
 
-<ul>
-    @foreach (var restaurant in Model)
-    {
-        <li>@restaurant.Name</li>
-    }
-</ul>
 
 @*<div class="row">
         <div class="col-md-4">
