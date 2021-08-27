@@ -1,4 +1,6 @@
-﻿using System;
+﻿using OdeToFood.Data.Models;
+using OdeToFood.Data.Service;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -9,9 +11,14 @@ namespace OdeToFood.Web.Api
 {
     public class RestaurantsController : ApiController
     {
-        public string Get()
+        IRestaurantData db;
+        public RestaurantsController(IRestaurantData db)
         {
-            return "Hello, World!";
+            this.db = db;
+        }
+        public IEnumerable<Restaurant> Get()
+        {
+            return db.GetAll();
         }
     }
 }
