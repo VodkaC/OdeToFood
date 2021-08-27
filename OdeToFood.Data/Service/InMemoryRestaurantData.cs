@@ -11,11 +11,17 @@ namespace OdeToFood.Data.Service
         public InMemoryRestaurantData()
         {
             restaurants = new List<Restaurant>() {
-                new Restaurant() {Id = 1, Name = "Scott's Pizza", Cuisine = CuisineType.None },
-                new Restaurant() {Id = 2, Name = "Tersiguels", Cuisine = CuisineType.None },
-                new Restaurant() {Id = 3, Name = "Mango-Grove", Cuisine = CuisineType.None }
+                new Restaurant() {Id = 1, Name = "Scott's Pizza", Cuisine = CuisineType.Indian },
+                new Restaurant() {Id = 2, Name = "Tersiguels", Cuisine = CuisineType.Italian },
+                new Restaurant() {Id = 3, Name = "Mango-Grove", Cuisine = CuisineType.French }
             };
         }
+
+        public Restaurant Get(int id)
+        {
+            return restaurants.FirstOrDefault(x => x.Id == id);
+        }
+
         public IEnumerable<Restaurant> GetAll()
         {
             return restaurants.OrderBy(r => r.Name);
