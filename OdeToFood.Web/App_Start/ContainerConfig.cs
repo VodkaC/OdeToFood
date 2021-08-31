@@ -19,9 +19,10 @@ namespace OdeToFood.Web
 
             builder.RegisterControllers(typeof(MvcApplication).Assembly);
             builder.RegisterApiControllers(typeof(MvcApplication).Assembly);
-            builder.RegisterType<InMemoryRestaurantData>().As<IRestaurantData>().SingleInstance();
-            //ToDoo: az .AS azt mondja, hogy azt a tipust amelyt előtte én akarom használni, akkor az .AS<>-ben lévő tipussal ovverradoljam.
-            //Tehát a Controller.cs konstruktorban IRestaurantData fog müködni.  IRestaurantData res = new InMemoryRestaurantData();
+            builder.RegisterType<SqlRestaurantData>()
+                .As<IRestaurantData>().InstancePerRequest();
+            builder.RegisterType<OdeToFoodDbContext>().InstancePerRequest();
+
             var container = builder.Build();
             DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
             httpConfiguration.DependencyResolver = new AutofacWebApiDependencyResolver(container);

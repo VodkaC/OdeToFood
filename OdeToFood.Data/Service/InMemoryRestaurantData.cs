@@ -42,5 +42,10 @@ namespace OdeToFood.Data.Service
         {
             return restaurants.OrderBy(r => r.Name);
         }
+
+        public void Delete(Restaurant restaurant)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
